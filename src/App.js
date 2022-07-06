@@ -13,17 +13,18 @@ import QRCodeLogIn from './Components/QRCodeLogIn';
 import QRCodePage from './Components/QRCodePage';
 
 function App() {
+  const [currentUser, setCurrentUser] = useState('')
+
   return (
     <div className="App">
-
       <Routes>
         <Route path='/' element={<LandingPage />} />
-        <Route path='/login' element={<LogInPage />} />
-        <Route path='/signup' element={<SignUpPage />} />
+        <Route path='/login' element={<LogInPage setUser={setCurrentUser} />} />
+        <Route path='/signup' element={<SignUpPage setUser={setCurrentUser} />} />
         <Route path='/createuser' element={<UserCreationPage />} />
         <Route path='/dashboard' element={<UserDashBoardPage />} />
         <Route path='/event' element={<EventPage />} />
-        <Route path='/createevent' element={<EventCreationPage />} />
+        <Route path='/createevent' element={<EventCreationPage user={currentUser} />} />
         <Route path='/qrcode' element={<QRCodePage />} />
         <Route path='/qrlogin' element={<QRCodeLogIn />} />
       </Routes>
